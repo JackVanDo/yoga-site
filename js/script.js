@@ -38,10 +38,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //Timer 
 
-    let deadLine = '2020-06-24'; // Создаем переменную в которой указываем конечную дату
+    let deadLine = '2020-06-25'; // Создаем переменную в которой указываем конечную дату
 
     function getTimeRemaning(endtime) {   // функция для определания разницы между конечной и текущей датой
-        let t = Date.parse(endtime) - Date.parse(new Date()),
+        let nowDate = new Date();
+        nowDate.setHours(nowDate.getHours() + 3);  // Добавляем 3 часа что бы было московское время
+        
+        let t = Date.parse(endtime) - Date.parse(nowDate), 
             seconds = Math.floor((t/1000) % 60),
             minutes = Math.floor((t/1000/60) % 60),
             hours = Math.floor((t/(1000*60*60)));
@@ -63,14 +66,21 @@ window.addEventListener('DOMContentLoaded', function() {
 
         function updateClock() {
             let t = getTimeRemaning(endtime);
-            hours.textContent = t.hours;
-            minutes.textContent = t.minutes;
-            seconds.textContent = t.seconds;
+            if (t.hours < 10) {
+                hours.textContent = '0' + t.hours;
+            } else { hours.textContent = t.hours;}
 
+            if (t.minutes < 10) {
+                hours.textContent = '0' + t.minutes;
+            } else {minutes.textContent = t.minutes;}
+
+            if (t.seconds < 10) {
+                seconds.textContent = '0' + t.seconds;
+            } else { seconds.textContent = t.seconds;}
+            
             if (t.total <= 0) {
                 clearInterval(timeInterval);
             }
-
         }    
     }
 
