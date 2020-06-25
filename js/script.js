@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //Timer 
 
-    let deadLine = '2020-06-25'; // Создаем переменную в которой указываем конечную дату
+    let deadLine = '2020-06-26'; // Создаем переменную в которой указываем конечную дату
 
     function getTimeRemaning(endtime) {   // функция для определания разницы между конечной и текущей датой
         let nowDate = new Date();
@@ -85,4 +85,49 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     setClock('timer', deadLine);
+
+    // Modal
+
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close'),
+        descriptionBtn = document.querySelectorAll('.description-btn');
+            
+
+    // more.addEventListener('click', function() {
+    //     overlay.style.display = 'block';
+    //     this.classList.add('more-splash');
+    //     document.body.style.overflow = 'hidden'; // при открытии модального окна запрещает "скролить" страницу
+    // });
+
+    // close.addEventListener('click', function() {
+    //     overlay.style.display = 'none';
+    //     more.classList.remove('more-splash');
+    //     document.body.style.overflow = '';
+    // });
+
+    let modal = {
+        showModal: function () {
+            overlay.style.display = 'block';
+            this.classList.add('more-splash');
+            document.body.style.overflow = 'hidden'; // при открытии модального окна запрещает "скролить" страницу
+            },
+        closeModal: function () {
+            overlay.style.display = 'none';
+            more.classList.remove('more-splash');
+            document.body.style.overflow = '';
+        }
+    
+    };
+      
+
+    for (let i = 0; i < descriptionBtn.length; i++) { 
+        descriptionBtn[i].addEventListener('click', modal.showModal);
+    };
+
+    more.addEventListener('click', modal.showModal);
+    close.addEventListener('click', modal.closeModal);
+
+
+
 });
