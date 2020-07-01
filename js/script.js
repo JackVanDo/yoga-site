@@ -7,23 +7,23 @@ window.addEventListener('DOMContentLoaded', function() {
         tabContent = document.querySelectorAll('.info-tabcontent');
 
 
-    function hideTabContent(a) {
+    let hideTabContent = (a = 1) => {
         for (let i = a; i < tabContent.length; i++) {
             tabContent[i].classList.remove('show');
             tabContent[i].classList.add('hide');
         }
-    }
+    };
 
-    hideTabContent(1);
+    hideTabContent();
 
-    function showTabContent(b) {
+    let showTabContent = (b) => {
         if (tabContent[b].classList.contains('hide')) {
             tabContent[b].classList.remove('hide'); 
             tabContent[b].classList.add('show');
         }
-    }
+    };
 
-    info.addEventListener('click', function(event) {
+    info.addEventListener('click', () => {
         let target = event.target;
         if (target && target.classList.contains('info-header-tab')) {
             for(let i = 0; i < tab.length; i++) {
@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //Timer 
 
-    let deadLine = '2020-06-26'; // Создаем переменную в которой указываем конечную дату
+    let deadLine = '2020-07-02'; // Создаем переменную в которой указываем конечную дату
 
     function getTimeRemaning(endtime) {   // функция для определания разницы между конечной и текущей датой
         let nowDate = new Date();
@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', function() {
             } else { seconds.textContent = t.seconds;}
             
             if (t.total <= 0) {
-                clearInterval(timeInterval);
+                 clearInterval(timeInterval);
             }
         }    
     }
@@ -94,17 +94,6 @@ window.addEventListener('DOMContentLoaded', function() {
         descriptionBtn = document.querySelectorAll('.description-btn');
             
 
-    // more.addEventListener('click', function() {
-    //     overlay.style.display = 'block';
-    //     this.classList.add('more-splash');
-    //     document.body.style.overflow = 'hidden'; // при открытии модального окна запрещает "скролить" страницу
-    // });
-
-    // close.addEventListener('click', function() {
-    //     overlay.style.display = 'none';
-    //     more.classList.remove('more-splash');
-    //     document.body.style.overflow = '';
-    // });
 
     let modal = {
         showModal: function () {
