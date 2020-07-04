@@ -117,6 +117,26 @@ window.addEventListener('DOMContentLoaded', function() {
     more.addEventListener('click', modal.showModal);
     close.addEventListener('click', modal.closeModal);
 
+    // class Options {
+    //     constructor (height, width, background, fontSize, textAlign) {
+    //         this.height = height;
+    //         this.width = width;
+    //         this.background = background;
+    //         this.fontSize = fontSize;
+    //         this.textAlign = textAlign;
+    //     }
+    //     addNewDiv() {
+    //         let newDiv = document.createElement('div');
+    //         newDiv.innerHTML = 'Ну это Жека синьер ДЖИЭС разработчик осваивает ЕС6';
+    //         document.body.append(newDiv);
+    //         console.log(this.height);
+    //         newDiv.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.background}; fontSize: ${this.fontSize}; textAlign: ${this.textAlign};`;
+    //      }
+    // }
+
+    // let newDiv = new Options (300, 300, '#00FFFF', 15, 'center');
+    // newDiv.addNewDiv();
 
 
 });
+ 
